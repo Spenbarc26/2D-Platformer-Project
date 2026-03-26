@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 475162976754482760}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -219,6 +219,8 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  extraJumpsValue: 1
+  extraJumps: 0
 --- !u!95 &475162976754482760
 Animator:
   serializedVersion: 7
