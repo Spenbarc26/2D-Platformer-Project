@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public LayerMask groundLayer;
     public int extraJumpsValue = 1;
     public int extraJumps;
+    public int coins;
 
     private Rigidbody2D rb;
     private bool isGrounded;
