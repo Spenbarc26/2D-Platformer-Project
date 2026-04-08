@@ -13,6 +13,9 @@ public class Player : MonoBehaviour
     public float groundCheckRadius = 0.2f;
     public LayerMask groundLayer;
     public Image healthImage;
+    public AudioClip jumpClip;
+    public AudioClip hurtClip;
+
 
     public int extraJumpsValue = 1;
     public int extraJumps;
@@ -21,7 +24,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private bool isGrounded;
     private SpriteRenderer spriteRenderer;
-
+    private AudioSource audioSource;
     private Animator animator;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -31,6 +34,7 @@ public class Player : MonoBehaviour
         spriteRenderer = rb.GetComponent<SpriteRenderer>();
         extraJumps = extraJumpsValue;
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>(); 
     }
 
     // Update is called once per frame
@@ -49,11 +53,13 @@ public class Player : MonoBehaviour
             if(isGrounded)
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+                playSFX(jumpClip);
             }
             else if(extraJumps >0)
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
                 extraJumps--;
+                playSFX(jumpClip);
             }
         SetAnimation(moveInput);
 
@@ -94,6 +100,7 @@ public class Player : MonoBehaviour
     {
         if(collision.gameObject.tag == "Damage")
         {
+            playSFX(hurtClip);
             health -= 25;
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             StartCoroutine(blinkRed());
@@ -113,5 +120,11 @@ public class Player : MonoBehaviour
     private void Die()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene");
+    }
+    public void playSFX(AudioClip audioClip, float volume = 1f)
+    {
+        audioSource.clip = audioClip;
+        audioSource.volume = volume;
+        audioSource.Play();
     }
 }
