@@ -30,6 +30,9 @@ public class Player : MonoBehaviour
     public float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
 
+    public float jumpBufferTime = 0.15f;
+    private float jumpBufferCounter;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -58,18 +61,31 @@ public class Player : MonoBehaviour
         }
 
         if (Input.GetButtonDown("Jump"))
-            if(coyoteTimeCounter > 0f)
+        {
+            jumpBufferCounter = jumpBufferTime;
+        }
+        else
+        {
+            jumpBufferCounter -= Time.deltaTime;
+        }
+
+        if (jumpBufferCounter > 0f)
+        {
+            if (coyoteTimeCounter > 0f)
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
                 playSFX(jumpClip);
-                coyoteTimeCounter = 0;
+                coyoteTimeCounter = 0f;
+                jumpBufferCounter = 0f;
             }
-            else if(extraJumps >0)
+            else if (extraJumps > 0)
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
                 extraJumps--;
                 playSFX(jumpClip);
+                jumpBufferCounter = 0f;
             }
+        }
         SetAnimation(moveInput);
 
         healthImage.fillAmount = health / 100f;
