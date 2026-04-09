@@ -27,6 +27,9 @@ public class Player : MonoBehaviour
     private AudioSource audioSource;
     private Animator animator;
 
+    public float coyoteTime = 0.2f;
+    private float coyoteTimeCounter;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -46,14 +49,20 @@ public class Player : MonoBehaviour
 
         if(isGrounded)
         {
+            coyoteTimeCounter = coyoteTime;
             extraJumps = extraJumpsValue;
+        }
+        else
+        {
+            coyoteTimeCounter -= Time.deltaTime;
         }
 
         if (Input.GetButtonDown("Jump"))
-            if(isGrounded)
+            if(coyoteTimeCounter > 0f)
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
                 playSFX(jumpClip);
+                coyoteTimeCounter = 0;
             }
             else if(extraJumps >0)
             {
