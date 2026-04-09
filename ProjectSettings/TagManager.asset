@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Damage
   - Ground
+  - BouncePad
   layers:
   - Default
   - TransparentFX
