@@ -8,7 +8,8 @@ public class Player : MonoBehaviour
     public float moveSpeed = 4f;
 
     public int health = 100;
-    public float jumpForce = 8f;
+    public float jumpForce = 7.5f;
+    public float jumpContinuesForce = 1f;
     public Transform groundCheck;
     public float groundCheckRadius = 0.2f;
     public LayerMask groundLayer;
@@ -60,7 +61,7 @@ public class Player : MonoBehaviour
             coyoteTimeCounter -= Time.deltaTime;
         }
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             jumpBufferCounter = jumpBufferTime;
         }
@@ -86,6 +87,12 @@ public class Player : MonoBehaviour
                 jumpBufferCounter = 0f;
             }
         }
+
+        if (Input.GetKey(KeyCode.Space) && rb.linearVelocityY > 0)
+        {
+            rb.AddForceY(jumpContinuesForce);
+        }
+
         SetAnimation(moveInput);
 
         healthImage.fillAmount = health / 100f;

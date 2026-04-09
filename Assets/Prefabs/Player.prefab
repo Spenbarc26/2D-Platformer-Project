@@ -143,7 +143,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -215,7 +215,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player
   moveSpeed: 4
   health: 100
-  jumpForce: 8
+  jumpForce: 8.5
+  jumpContinuesForce: 0.75
   groundCheck: {fileID: 2454517257367876612}
   groundCheckRadius: 0.2
   groundLayer:
@@ -227,6 +228,8 @@ MonoBehaviour:
   extraJumpsValue: 1
   extraJumps: 0
   coins: 0
+  coyoteTime: 0.2
+  jumpBufferTime: 0.15
 --- !u!95 &475162976754482760
 Animator:
   serializedVersion: 7
