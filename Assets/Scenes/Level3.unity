@@ -1573,7 +1573,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec1b81dcc8df90a4bad57ba4fadd4d20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NextLevel
-  nextLevelName: Level3
+  nextLevelName: Level4
+  nextLevelValue: 0
 --- !u!1 &1021867253
 GameObject:
   m_ObjectHideFlags: 0
@@ -2119,6 +2120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NextLevel
   nextLevelName: Level2
+  nextLevelValue: 0
 --- !u!114 &1560388598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2681,6 +2683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NextLevel
   nextLevelName: Level2
+  nextLevelValue: 0
 --- !u!114 &1847076931
 MonoBehaviour:
   m_ObjectHideFlags: 0
