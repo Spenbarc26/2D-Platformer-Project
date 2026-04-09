@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Damage
   - Ground
+  - CoinText
   layers:
   - Default
   - TransparentFX
