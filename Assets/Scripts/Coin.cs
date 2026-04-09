@@ -1,17 +1,26 @@
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
     public AudioClip coinClip;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public int coinValue = 1;
+
+    private TextMeshProUGUI cointText;
+
+    private void Start()
+    {
+        cointText = GameObject.FindWithTag("CoinText").GetComponent<TextMeshProUGUI>(); 
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
        if(collision.gameObject.tag =="Player")
         {
             Player player = collision.gameObject.GetComponent<Player>();
-            player.coins += 1;
+            player.coins += coinValue;
             player.playSFX(coinClip,0.4f);
+            cointText.text = player.coins.ToString();
             Destroy(gameObject);
         }
     }
