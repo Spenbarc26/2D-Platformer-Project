@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - BouncePad
   - CoinText
+  - Strawberry
   layers:
   - Default
   - TransparentFX
