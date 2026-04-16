@@ -105,6 +105,11 @@ public class Player : MonoBehaviour
         {
             rb.gravityScale = 2f;
         }
+
+        if (transform.position.y < -15)
+        {
+            Die();
+        }
     }
 
     private void FixedUpdate()
